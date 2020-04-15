@@ -4,20 +4,6 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "# Booth multiplier"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "metadata": {},
-   "source": [
-    "## 32 bits booth Algorithm"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "metadata": {},
-   "source": [
     "![32 bit 乘法器](img/booth.png)"
    ]
   }
