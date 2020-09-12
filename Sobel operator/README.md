@@ -82,5 +82,6 @@ Sobel combine = (sobel X + sobel Y) / 2 可以用 comb = (convx_res + convy_res 
 ## (四) 合成模擬結果與資源使用率
 ![Image](https://github.com/vita70579/VLSI-Implementation/raw/master/Sobel%20operator/Image/result.png)
 <p align="center">圖九、合成模擬結果</p>
+
 ![Image](https://github.com/vita70579/VLSI-Implementation/raw/master/Sobel%20operator/Image/synthesis.png)
 <p align="center">圖十、資源使用率</p>
