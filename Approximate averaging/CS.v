@@ -1,4 +1,3 @@
-
 `timescale 1ns/10ps
 `define RstEn 1'b1
 `define RstDisEn 1'b0
@@ -17,19 +16,12 @@ output reg [`OutputBus] Y;
 
 reg [11:0] sum;
 reg [`InputBus] mem[`MemAddrBus];
-wire[`InputBus] res1_1,
-				res1_2,
-				res1_3,
-				res1_4,
-				res2_1,
-				res2_2,
-				res3_1;
-				
-wire [`InputBus] avg;
-wire [`InputBus] appr;
 
+wire [`InputBus] avg;
 assign avg = sum / `Batch;
 
+wire[`InputBus] res1_1,res1_2,res1_3,res1_4,res2_1,res2_2,res3_1;
+wire [`InputBus] appr;
 assign res1_1 = (mem[0] > mem[1])? (mem[0] <= avg)? mem[0]:(mem[1] <= avg)? mem[1]:`ZeroInput : (mem[1] <= avg)? mem[1]:(mem[0] <= avg)? mem[0]:`ZeroInput;
 assign res1_2 = (mem[2] > mem[3])? (mem[2] <= avg)? mem[2]:(mem[3] <= avg)? mem[3]:`ZeroInput : (mem[3] <= avg)? mem[3]:(mem[2] <= avg)? mem[2]:`ZeroInput;
 assign res1_3 = (mem[4] > mem[5])? (mem[4] <= avg)? mem[4]:(mem[5] <= avg)? mem[5]:`ZeroInput : (mem[5] <= avg)? mem[5]:(mem[4] <= avg)? mem[4]:`ZeroInput;
@@ -65,18 +57,16 @@ always @(posedge clk) begin
 	end
 	else begin
 	
-		sum = sum - mem[0];
-		sum = sum + X;
-		
-		mem[0] = mem[1];
-		mem[1] = mem[2];
-		mem[2] = mem[3];
-		mem[3] = mem[4];
-		mem[4] = mem[5];
-		mem[5] = mem[6];
-		mem[6] = mem[7];
-		mem[7] = mem[8];
-		mem[8] = X;
+		sum <= sum - mem[0] + X;
+		mem[0] <= mem[1];
+		mem[1] <= mem[2];
+		mem[2] <= mem[3];
+		mem[3] <= mem[4];
+		mem[4] <= mem[5];
+		mem[5] <= mem[6];
+		mem[6] <= mem[7];
+		mem[7] <= mem[8];
+		mem[8] <= X;
 			
 	end
 end
