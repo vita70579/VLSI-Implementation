@@ -1,4 +1,7 @@
 # RC4 Encryption and Decryption Circuit IP
+# 致謝
+參考的課程專案資料來源為國立成功大學-陳培殷教授實驗室(Digital IC Design Lab)及課程助教提供，在此致上最誠摯的感謝!  
+如有侵權煩請告知 vita70579@gmail.com
 ## (一) 簡介
 在密碼學中，RC4（來自 Rivest Cipher 4的縮寫）是一種流加密算法，密鑰長度可變。它加解密使用相同的密鑰，因此也屬於對稱加密算法。
   RC4是有線等效加密（WEP）中採用的加密算法，也曾經是TLS可採用的算法之一。
@@ -52,4 +55,33 @@
 <p align="center">圖八、plain data及cipher data結束時序圖</p>
 
 ## (三) 設計構想
+### (1) State machine
+![Image](https://github.com/vita70579/VLSI-Implementation/raw/master/RC4/Image/state_machine.png)
+<p align="center">圖九、狀態機與控制訊號</p>
 
+### (2) Control Unit
+採用2C(combinatorial logic)1S(Sequential logic)標準寫法，其中Output logic與Datapath合併在一個always block中。
+* Next-state logic (C1)  
+  Next-state logic負責接收Datapath或Output logic傳送來的控制訊號，並輸出狀態控制訊號給next_state暫存器。  
+  input:  
+    - key_valid: 當key準備好時，會先將key_valid設成high，然後在下一個負緣輸出key值。
+    - cycle: 用於判斷當下狀態為第幾個循環。
+    - j: KSA演算法的迴圈次數
+    - plain_in_valid: 因為明文長度不固定，所以當輸入的明文為有效時，plain_in_valid為high，若無效時plain_in_valid為low。
+    - cipher_in_valid: 因為密文長度不固定，所以當輸入的密文為有效時，cipher_in_valid為high，若無效時cipher_in_valid為low。
+    
+  output:
+    - next_state: 將被賦值為下一個狀態。
+* Output logic (C2)  
+  - cipher_out: 加密後運算結果記憶體寫出訊號，由8bits 整數(MSB)組成，為無號數。
+  - plain_out: 解密後運算結果記憶體寫出訊號，由8bits 整數(MSB)組成，為無號數。
+* State logic (S)  
+  負責將next_state暫存器的值在正緣觸發時鎖進current_state。
+  
+## (四) 合成模擬結果與資源使用率
+![Image](https://github.com/vita70579/VLSI-Implementation/raw/master/RC4/Image/result_tb1.png)
+![Image](https://github.com/vita70579/VLSI-Implementation/raw/master/RC4/Image/result_tb2.png)
+<p align="center">圖十、合成模擬結果</p>
+
+![Image](https://github.com/vita70579/VLSI-Implementation/raw/master/RC4/Image/synthesis.png)
+<p align="center">圖十一、資源使用率</p>
