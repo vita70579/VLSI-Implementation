@@ -83,5 +83,5 @@
 ![Image](https://github.com/vita70579/VLSI-Implementation/raw/master/RC4/Image/result_tb2.png)
 <p align="center">圖十、合成模擬結果</p>
 
-![Image](https://github.com/vita70579/VLSI-Implementation/raw/master/RC4/Image/.png)
+![Image](https://github.com/vita70579/VLSI-Implementation/raw/master/RC4/Image/synthesis.png)
 <p align="center">圖十一、資源使用率</p>
