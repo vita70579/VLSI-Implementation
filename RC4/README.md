@@ -10,7 +10,7 @@
   Sbox大小為64bytes利用輸入金鑰對明文進行加密，然後將加密完的字元輸出，再將所輸出加密的字元輸入，進行解密，還原出原本的明文。
 
 ## 設計規格
-### *Block Overview
+### Block Overview
 ![Image](https://github.com/vita70579/VLSI-Implementation/raw/master/RC4/Image/block_overview.png)  
 <p align="center">圖一、系統方塊圖</p>
 
