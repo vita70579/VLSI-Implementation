@@ -10,14 +10,14 @@
   Sbox大小為64bytes利用輸入金鑰對明文進行加密，然後將加密完的字元輸出，再將所輸出加密的字元輸入，進行解密，還原出原本的明文。
 
 ## 設計規格
-### Block Overview
+* Block Overview
 ![Image](https://github.com/vita70579/VLSI-Implementation/raw/master/RC4/Image/block_overview.png)  
 <p align="center">圖一、系統方塊圖</p>
 
-### I/O Interface
+* I/O Interface
 ![Image](https://github.com/vita70579/VLSI-Implementation/raw/master/RC4/Image/IO.png)
 
-### Function Description
+* Function Description
 本系統的key長度為32bytes，而明文的長度為不固定，最長為2048bytes，key的資料儲存於testfixture中，
   在系統進行reset之後，下一個cycle 會先輸出key_valid= high然後再過一個cycle後輸出key的值，
   當key_valid為high(除了第一個cycle)時代表key 值有效，當key 值輸入完畢後，同學需先將key跟Sbox進行打亂，
@@ -50,3 +50,6 @@
 
 ![Image](https://github.com/vita70579/VLSI-Implementation/raw/master/RC4/Image/end.png)
 <p align="center">圖八、plain data及cipher data結束時序圖</p>
+
+## 設計構想
+
