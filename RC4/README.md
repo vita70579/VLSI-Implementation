@@ -1,5 +1,5 @@
 # RC4 Encryption and Decryption Circuit IP
-## 簡介
+## (一) 簡介
 在密碼學中，RC4（來自 Rivest Cipher 4的縮寫）是一種流加密算法，密鑰長度可變。它加解密使用相同的密鑰，因此也屬於對稱加密算法。
   RC4是有線等效加密（WEP）中採用的加密算法，也曾經是TLS可採用的算法之一。
   由於 RC4算法存在弱點，2015年 2月所發布的RFC7465規定禁止在TLS中使用 RC4加密算法。
@@ -9,15 +9,15 @@
   此次作業請實作一個RC4加解密的電路，其中密鑰的長度固定為32bytes，明文的長度為不固定，最長長度不超過2048bytes，
   Sbox大小為64bytes利用輸入金鑰對明文進行加密，然後將加密完的字元輸出，再將所輸出加密的字元輸入，進行解密，還原出原本的明文。
 
-## 設計規格
-### Block Overview
+## (二) 設計規格
+### (1) Block Overview
 ![Image](https://github.com/vita70579/VLSI-Implementation/raw/master/RC4/Image/block_overview.png)  
 <p align="center">圖一、系統方塊圖</p>
 
-### I/O Interface
+### (2) I/O Interface
 ![Image](https://github.com/vita70579/VLSI-Implementation/raw/master/RC4/Image/IO.png)
 
-### Function Description
+### (3) Function Description
 本系統的key長度為32bytes，而明文的長度為不固定，最長為2048bytes，key的資料儲存於testfixture中，
   在系統進行reset之後，下一個cycle 會先輸出key_valid= high然後再過一個cycle後輸出key的值，
   當key_valid為high(除了第一個cycle)時代表key 值有效，當key 值輸入完畢後，同學需先將key跟Sbox進行打亂，
@@ -51,5 +51,5 @@
 ![Image](https://github.com/vita70579/VLSI-Implementation/raw/master/RC4/Image/end.png)
 <p align="center">圖八、plain data及cipher data結束時序圖</p>
 
-## 設計構想
+## (三) 設計構想
 
