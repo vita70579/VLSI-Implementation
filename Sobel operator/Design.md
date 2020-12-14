@@ -19,12 +19,12 @@ Sobel combine = (sobel X + sobel Y) / 2 可以用 comb = (convx_res + convy_res 
 採用2C(combinatorial logic)1S(Sequential logic)標準寫法，其中Output logic、State logic、Datapath合併在一個always block中。
 ># Next-state logic (C1)  
   Next-state logic負責接收Datapath或Output logic傳送來的控制訊號，並輸出狀態控制訊號給next_state暫存器。  
-  >>input:  
+  ## input:  
     - ready: 灰階圖像準備完成指示訊號。當訊號為 High時，表示灰階圖像準備完成，此時SOBEL才可以開始向 testfixture發送輸入灰階圖像資料索取位址。
     - conv_done: 捲積狀態完成，將進行下一個狀態(輸出捲積結果)。
     - pointer: 每次捲積圖像區域的左上角位址。
     
-  >>output:
+  ## output:
     - next_state: 將被賦值為下一個狀態。
 ># Output logic (C2)  
   - cwr: SOBEL運算輸出記憶體寫入致能訊號。當時脈正緣觸發時，若此訊號為High，表示要進行寫入動作。testfixture會將cdata_wr內容寫到caddr_wr所指示之位址。
