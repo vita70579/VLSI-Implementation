@@ -12,14 +12,14 @@ Sobel Operator IP
 此次作業請實作一圖像邊緣偵測系統，利用 Gx和 Gy對圖像進行捲積得出sobelX圖像及sobelY圖像，再利用得出的sobelX圖像及 sobelY圖像相加除以二得出sobelCombine的圖像。
   
 ## (二) 設計規格
-> (1) Block overview <br>
+>### (1) Block overview
 ![Image](https://github.com/vita70579/VLSI-Implementation/raw/master/Sobel%20operator/Image/block_overview.png)  
 <p align="center">圖一、系統方塊圖</p>
 
-> (2) I/O Interface <br>
+>### (2) I/O Interface <br>
 ![Image](https://github.com/vita70579/VLSI-Implementation/raw/master/Sobel%20operator/Image/IO.png)
 
-> (3) Function Description <br>
+>### (3) Function Description <br>
 本系統的輸入圖片大小為256x256存放於testfixture 的記憶體中，灰階圖像各pixels與其記憶體的對應方式如下圖四.說明。<br>
 動作時序上SOBEL電路需利用iaddr發送欲索取圖像資料的位址到testfixture(如圖三t1時間點)，testfixture在每個時脈負緣後會將iaddr所指示位址之pixel資料利用idata送入SOBEL電路(如圖三t2時間點)。
 本系統已經將zero_padding後的資料存於記憶體中，利用Gx、Gy分別作捲積，得出Sobel X及Sobel Y的圖，在做Sobel運算時，若值超過255就將其設定為255，
