@@ -17,5 +17,11 @@
 
 - 由4.5.6.可得setup uncertainty = 0.3 + 0.3 + 0.04 + 0.05 = 0.15ns
 
+環境條件
+=======
+1. input ports(drivers):
+  >- Specify a drive on all inputs, except **clk, reset, ready** and **busy**, using the buffer **bufbd1** in the library.
+  - The 
+ 
 系統方塊圖
 =========
