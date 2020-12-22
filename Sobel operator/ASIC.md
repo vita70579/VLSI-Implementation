@@ -20,8 +20,8 @@
 環境條件
 =======
 1. input ports(drivers):
-  >- Specify a drive on all inputs, except **clk, reset, ready** and **busy**, using the buffer **bufbd1** in the library.
-  - The 
- 
-系統方塊圖
-=========
+  >- Specify a drive on all inputs, except **clk, reset, ready**, using the buffer **BUFX4** in the library.
+  >- The **ready** ports are chip-level inputs and have a **100ps** maxumum input transition.
+2. output ports(loads):
+  >- All outputs, except **busy**, drive a maximum load equivalent to **2 times** the capacitance of the **A** pin of the cell **BUFX4**.
+  >- The **busy** port drives a maximum load of **25fF**.
